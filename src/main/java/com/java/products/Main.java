@@ -5,7 +5,19 @@ import com.mongodb.client.MongoDatabase;
 public class Main {
     public static void main(String[] args) {
         MongoDatabase database = MongoDBConnection.connect();
-        CollectionCreation.createCollection(database);
-        DataInsertion.insertProducts(database);
+
+        if (database != null) {
+            // Step 1: Create all collections
+            CollectionCreation.createCollections(database);
+
+            // Step 2: Insert sample data into all collections
+            DataInsertion.insertAllData(database);
+        }
     }
 }
+
+
+
+
+
+
